@@ -1,0 +1,21 @@
+@startuml
+
+box "Foo Bar Sequence Diagram"
+
+Foo -> Bar: Hello!
+
+alt success case
+  Bar -->> Foo: Hello?
+else failure case
+  Bar -->> Foo: Foo?
+
+  loop 3 times
+    Foo -> Bar: Yes, hello!
+  end
+end
+
+end box
+
+@enduml
+
+' vim: set spell spelllang=en_us:
