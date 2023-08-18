@@ -1,0 +1,13 @@
+<style>
+h1.title {
+	font-size: 175%;
+}
+
+section.level1 > h1 {
+	font-size: 150%;
+}
+
+section.level2 > h1 {
+	font-size: 125%;
+}
+</style>
