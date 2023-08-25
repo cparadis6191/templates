@@ -1,11 +1,12 @@
-TARGET = graph
+INPUTS = $(wildcard *.gv)
+OUTPUTS = $(INPUTS:.gv=.svg)
 
-OUTPUT = ${TARGET}.svg
+all: $(OUTPUTS)
 
-${OUTPUT}: ${TARGET}.gv
-	dot -Tsvg ${TARGET}.gv -o${OUTPUT}
+%.svg: %.gv
+	dot -Tsvg $^ -o$@
 
 .PHONY: clean
 
 clean:
-	rm --force ${OUTPUT}
+	rm --force ${OUTPUTS}
