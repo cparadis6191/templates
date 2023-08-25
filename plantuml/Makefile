@@ -1,11 +1,12 @@
-TARGET = plantuml
+INPUTS = $(wildcard *.puml)
+OUTPUTS = $(INPUTS:.puml=.svg)
 
-OUTPUT = ${TARGET}.svg
+all: $(OUTPUTS)
 
-${OUTPUT}: ${TARGET}.puml
-	plantuml -tsvg ${TARGET}.puml
+%.svg: %.puml
+	plantuml -tsvg $^
 
 .PHONY: clean
 
 clean:
-	rm --force ${OUTPUT}
+	rm --force ${OUTPUTS}
