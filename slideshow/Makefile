@@ -5,28 +5,28 @@ THEME = solarized
 # none fade slide convex concave zoom
 TRANSITION = fade
 
-FROM = --from=markdown ${TARGET}.md
+FROM = --from=markdown $(TARGET).md
 FFLAGS =
 
-OUTPUT = ${TARGET}.html
+OUTPUT = $(TARGET).html
 
 DIAGRAM_LUA = diagram.lua
 
-TO = --to=revealjs --output=${OUTPUT}
-TFLAGS = --embed-resources --include-in-header=${TARGET}.css
-TFLAGS += --lua-filter=${DIAGRAM_LUA} --slide-level=2 --standalone
-TFLAGS += --variable=theme=${THEME} --variable=transition=${TRANSITION}
+TO = --to=revealjs --output=$(OUTPUT)
+TFLAGS = --embed-resources --include-in-header=$(TARGET).css
+TFLAGS += --lua-filter=$(DIAGRAM_LUA) --slide-level=2 --standalone
+TFLAGS += --variable=theme=$(THEME) --variable=transition=$(TRANSITION)
 
 DATE = --metadata=date:'$(shell date +'%B %d, %Y')'
 
-${OUTPUT}: ${TARGET}.md ${TARGET}.css ${DIAGRAM_LUA} images/*
-	pandoc ${FROM} ${FFLAGS} ${TO} ${TFLAGS} ${DATE}
+$(OUTPUT): $(TARGET).md $(TARGET).css $(DIAGRAM_LUA) images/*
+	pandoc $(FROM) $(FFLAGS) $(TO) $(TFLAGS) $(DATE)
 
-${DIAGRAM_LUA}:
+$(DIAGRAM_LUA):
 	curl --location --remote-name \
-		https://raw.githubusercontent.com/pandoc-ext/diagram/v1.0.0/_extensions/diagram/${DIAGRAM_LUA}
+		https://raw.githubusercontent.com/pandoc-ext/diagram/v1.0.0/_extensions/diagram/$(DIAGRAM_LUA)
 
 .PHONY: clean
 
 clean:
-	rm --force ${DIAGRAM_LUA} ${OUTPUT}
+	rm --force $(DIAGRAM_LUA) $(OUTPUT)

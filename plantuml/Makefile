@@ -9,4 +9,4 @@ all: $(OUTPUTS)
 .PHONY: clean
 
 clean:
-	rm --force ${OUTPUTS}
+	rm --force $(OUTPUTS)
