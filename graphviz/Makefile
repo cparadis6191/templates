@@ -1,5 +1,5 @@
-INPUTS = $(wildcard *.gv)
-OUTPUTS = $(INPUTS:.gv=.svg)
+INPUTS ::= $(wildcard *.gv)
+OUTPUTS ::= $(INPUTS:.gv=.svg)
 
 all: $(OUTPUTS)
 

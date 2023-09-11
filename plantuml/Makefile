@@ -1,5 +1,5 @@
-INPUTS = $(wildcard *.puml)
-OUTPUTS = $(INPUTS:.puml=.svg)
+INPUTS ::= $(wildcard *.puml)
+OUTPUTS ::= $(INPUTS:.puml=.svg)
 
 all: $(OUTPUTS)
 

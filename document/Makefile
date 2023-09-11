@@ -1,15 +1,15 @@
-TARGET = document
+TARGET ::= document
 
-FROM = --from=markdown-implicit_figures $(TARGET).md
+FROM ::= --from=markdown-implicit_figures $(TARGET).md
 FFLAGS =
 
-OUTPUT = $(TARGET).pdf
-DIAGRAM_LUA = diagram.lua
+OUTPUT ::= $(TARGET).pdf
+DIAGRAM_LUA ::= diagram.lua
 
-DATE = --metadata=date:'$(shell date +'%B %d, %Y')'
+DATE ::= --metadata=date:'$(shell date +'%B %d, %Y')'
 
-TO = --to=pdf --output=$(OUTPUT)
-TFLAGS = --lua-filter=$(DIAGRAM_LUA) --number-sections
+TO ::= --to=pdf --output=$(OUTPUT)
+TFLAGS ::= --lua-filter=$(DIAGRAM_LUA) --number-sections
 TFLAGS += --variable=geometry:'top=1in,bottom=1in,left=1in,right=1in'
 
 $(OUTPUT): $(TARGET).md $(DIAGRAM_LUA) images/*
